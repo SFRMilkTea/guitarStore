@@ -20,7 +20,7 @@ class CartView(TemplateView):
         if form.is_valid():
             cd = form.cleaned_data
             cart.add(product=product,
-                     quantity=cd['quantity'],
+                     quantity=1,
                      update_quantity=cd['update'])
         return redirect('cart_detail')
 
@@ -32,7 +32,7 @@ class CartView(TemplateView):
         if form.is_valid():
             cd = form.cleaned_data
             cart.delete(product=product,
-                        quantity=cd['quantity'],
+                        quantity=1,
                         update_quantity=cd['update'])
         return redirect('cart_detail')
 
