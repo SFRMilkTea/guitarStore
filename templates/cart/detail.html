@@ -26,6 +26,12 @@
 {% load static %}
 {% block content %}
 <h1>Ваша корзина</h1>
+
+{% if not cart.get_total_price %}
+<p>В вашей корзине пока ничего нет</p>
+<a href="/products">Список товаров</a>
+{% else %}
+
 <table class="cart">
     <thead>
     <tr>
@@ -91,6 +97,7 @@
 <a href="{% url 'order_create' %}" class="button">
     Оформить заказ
 </a>
+{% endif %}
 {% endif %}
 {% endblock %}
 </body>
