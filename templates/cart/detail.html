@@ -11,12 +11,12 @@
 
 {% if not user.is_authenticated %}
 
-<a href="accounts/login">Войти</a>
-<a href="accounts/signup">Зарегистрироваться</a>
+<a href="/accounts/login">Войти</a>
+<a href="/accounts/signup">Зарегистрироваться</a>
 
 {% else %}
 
-<a href="accounts/logout">Выйти</a>
+<a href="/accounts/logout">Выйти</a>
 
 {% endif %}
 
@@ -25,16 +25,16 @@
 <a href="/products">Список товаров</a>
 {% load static %}
 {% block content %}
-<h1>Your shopping cart</h1>
+<h1>Ваша корзина</h1>
 <table class="cart">
     <thead>
     <tr>
-        <th>Product</th>
+        <th>Товар</th>
 
-        <th>Unit price</th>
-        <th>Price</th>
+        <th>Цена</th>
+        <th>Общая цена</th>
         <th class="th-empty"></th>
-        <th class='quantity'>Quantity</th>
+        <th class='quantity'>Количество</th>
         <th></th>
     </tr>
     </thead>
@@ -77,7 +77,7 @@
     {% endwith %}
     {% endfor %}
     <tr class="total">
-        <td>Total</td>
+        <td>Итого:</td>
         <td class="num">{{ cart.get_total_price }} рублей</td>
     </tr>
     </tbody>
