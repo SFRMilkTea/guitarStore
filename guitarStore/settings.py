@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'cart',
     'guitarStoreApp',
     'accounts',
+    'orders',
 ]
 
 MIDDLEWARE = [
