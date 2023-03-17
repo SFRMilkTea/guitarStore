@@ -33,9 +33,9 @@
 
         <th>Unit price</th>
         <th>Price</th>
-            <th class="th-empty"></th>
-            <th class='quantity'>Quantity</th>
-            <th></th>
+        <th class="th-empty"></th>
+        <th class='quantity'>Quantity</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -48,20 +48,31 @@
         <td class="num">{{ item.total_price }} рублей</td>
 
         <div class='quantity'>
-        <td class="quantity-td">
-            <form  action="{% url 'cart_remove' id_product=product.id_product %}">
-                {{ cart_product_form }}
-                {% csrf_token %}
-                <button class='quantity-button'type="submit">-</button>
-            </form>
-        </td>
-        <td>{{ item.quantity }}</td>
-        <td>
-            <form>
-                <button class='quantity-button' type="submit">+</button>
-            </form>
-        </td>
-            </div>
+            <td class="quantity-td">
+                <form action="{% url 'cart_delete' id_product=product.id_product %}" method="post">
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.update }}
+                    <button class='quantity-button' type="submit">-</button>
+                    {% csrf_token %}
+                </form>
+            </td>
+            <td>{{ item.quantity }}</td>
+            <td>
+                <form action="{% url 'cart_add' id_product=product.id_product %}" method="post">
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.update }}
+                    <button class='quantity-button' type="submit" value="Update">+</button>
+                    {% csrf_token %}
+                </form>
+            </td>
+            <td class="quantity-td">
+                <form action="{% url 'cart_remove' id_product=product.id_product %}">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <button class='quantity-button' type="submit">Удалить из корзины</button>
+                </form>
+            </td>
+        </div>
     </tr>
     {% endwith %}
     {% endfor %}

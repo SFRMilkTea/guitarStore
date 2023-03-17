@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from guitarStoreApp.models import Product
 from .cart import Cart
-from .forms import CartAddProductForm
+from .forms import CartAddProductForm, CartDeleteProductForm
 
 
 class CartView(TemplateView):
@@ -22,8 +22,18 @@ class CartView(TemplateView):
             cart.add(product=product,
                      quantity=cd['quantity'],
                      update_quantity=cd['update'])
-        #     вот тут в редиректе вообще не понятно реквест то ли надо передавать то ли нет
+        return redirect('cart_detail')
 
+    @require_POST
+    def cart_delete(request, id_product):
+        cart = Cart(request)
+        product = get_object_or_404(Product, id_product=id_product)
+        form = CartDeleteProductForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            cart.delete(product=product,
+                        quantity=cd['quantity'],
+                        update_quantity=cd['update'])
         return redirect('cart_detail')
 
     def cart_remove(request, id_product):
@@ -34,5 +44,7 @@ class CartView(TemplateView):
 
     def cart_detail(request):
         cart = Cart(request)
-        #     вот тут тоже не понятно, еще и словарь сомнения вызывает
+        for item in cart:
+            item['update_quantity_form'] = CartAddProductForm(initial={'update_quantity': True})
+            item['update_quantity_form'] = CartDeleteProductForm(initial={'update_quantity': True})
         return render(request, 'cart/detail.html', {'cart': cart})
