@@ -82,9 +82,16 @@
     </tr>
     </tbody>
 </table>
+
+{% if not user.is_authenticated %}
+<a href="/accounts/login" class="button">
+    Оформить заказ
+</a>
+{% else %}
 <a href="{% url 'order_create' %}" class="button">
     Оформить заказ
 </a>
+{% endif %}
 {% endblock %}
 </body>
 </html>
