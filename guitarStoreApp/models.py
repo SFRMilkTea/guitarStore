@@ -87,6 +87,7 @@ class Product(models.Model):
     id_body = models.ForeignKey(Body, models.DO_NOTHING, db_column='id_body')
     price = models.IntegerField()
     id_producer = models.ForeignKey(Producer, models.DO_NOTHING, db_column='id_producer')
+    picture = models.CharField(max_length=256)
 
     def __str__(self):
         return '%s (%s)' % (self.model, self.id_category)
@@ -94,6 +95,3 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product_detail',
                        args=[self.id_product])
-
-    def ge_id(self):
-        return self.id_product
