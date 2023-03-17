@@ -1,0 +1,15 @@
+.quantity{
+margin-left: 10px;
+}
+.quantity-td{
+    text-align: center;
+}
+.th-empty{
+width: 100px}
+
+.quantity-button{
+    border-radius: 20px;
+    cursor: pointer;
+}
+.quantity-button:hover{
+background-color: grey}

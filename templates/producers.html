@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все производители</title>
+</head>
+<body>
+
+<h1>Список всех производителей:</h1>
+<table>
+  <tr>
+    <th>Производитель</th>
+    <th>Вебсайт</th>
+  </tr>
+  {% for producer in producers %}
+  <tr>
+    <td>{{ producer.producer }}</td>
+    <td>{{ producer.website }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>

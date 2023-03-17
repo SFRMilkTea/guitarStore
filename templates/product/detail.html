@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Информация о продукте:
+{% load static %}
+{% block content %}
+
+<p>model: {{ product }}</p>
+<p class="price">{{ product.price }} рублей</p>
+<form action="{% url 'cart_add' id_product=product.id_product %}" method="post">
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="Add to cart">
+</form>
+{% endblock %}
+</body>
+</html>
