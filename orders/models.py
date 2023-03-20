@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from guitarStoreApp.models import Product
 
@@ -6,6 +7,7 @@ class Order(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
+    user = models.ForeignKey(User, models.DO_NOTHING, db_column='user')
     address = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

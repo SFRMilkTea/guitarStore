@@ -16,7 +16,10 @@ class OrderView(TemplateView):
         if request.method == 'POST':
             form = OrderCreateForm(request.POST)
             if form.is_valid():
-                order = form.save()
+                user = request.user
+                address = form.cleaned_data['address']
+                order = Order.objects.create(user=user,
+                                             address=address)
                 for item in cart:
                     OrderItem.objects.create(order=order,
                                              product=item['product'],
