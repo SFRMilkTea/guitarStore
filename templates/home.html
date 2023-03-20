@@ -12,6 +12,8 @@
 <a href="/cart">Корзина</a>
 {% if user.is_authenticated %}
 <a href="accounts/logout">Выйти</a>
+
+<a href="/lk">Личный кабинет</a>
 <h1>Привет, {{ user.username }}! Добро пожаловать в GuitarStore!</h1>
 {% else %}
 <a href="accounts/login">Войти</a>
