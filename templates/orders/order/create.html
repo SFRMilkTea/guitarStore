@@ -14,11 +14,11 @@
         {% for item in cart %}
         <li>
             {{ item.quantity }} x {{ item.product.model }}
-            <span>${{ item.total_price }}</span>
+            <span>{{ item.total_price }} рублей</span>
         </li>
         {% endfor %}
     </ul>
-    <p>Итого: ${{ cart.get_total_price }}</p>
+    <p>Итого: {{ cart.get_total_price }} рублей</p>
 </div>
 <p>Введите адрес доставки: </p>
 <form action="." method="post" class="order-form">
