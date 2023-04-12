@@ -2,10 +2,10 @@
 <form method="post">
     {% csrf_token %}
     <h1>Вход на сайт</h1>
-    <label for="{{ form.username.id_for_label }}">Имя:</label>
+    <label id="username" for="{{ form.username.id_for_label }}">Имя:</label>
     {{ form.username }}
-    <label for="{{ form.password.id_for_label }}">Пароль:</label>
+    <label id="password" for="{{ form.password.id_for_label }}">Пароль:</label>
     {{ form.password }}
-    <button type="submit">Войти</button>
+    <button id="login" type="submit">Войти</button>
 </form>
 </body>
