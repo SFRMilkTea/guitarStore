@@ -9,7 +9,7 @@ def order_created(order_id):
     Задача для отправки уведомления по электронной почте при успешном создании заказа.
     """
     order = Order.objects.get(id=order_id)
-    subject = 'Заказ №'.format(order_id)
+    subject = "Ваш заказ оформлен"
     message = 'Уважаемый {},\n\nспасибо за оформление заказа.\
                 Номер вашего заказа: {}.'.format(order.first_name,
                                                  order.id)
